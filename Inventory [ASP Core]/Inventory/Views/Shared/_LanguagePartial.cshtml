@@ -1,0 +1,69 @@
+﻿@*
+    _LanguagePartial its Include Translated JavaScript Messages that written in Global.js and custom.js and Some localization js files for used plugins like validate.js and bootstrap-tabl or any plugin use Messages need to be localized
+
+*@
+
+@model System.Globalization.CultureInfo
+@{
+    string lang = Model.Name;
+    
+}
+<script>
+    
+    // Current Culture
+    // Culture language Name : examples => "ar" or "en-GB" or "en-US" ...
+    var lang = "@lang";
+
+    // Global.js
+        // Translated Words and Messages
+    var BrandDeletionCanceledMsg =  "@localizer["BrandDeletionCanceledMsg"]";
+    var CanceledMsg = "@localizer["CanceledMsg"]";
+    var DeleteConfirmationMsg = "@localizer["DeleteConfirmationMsg"]";
+    var DeletedDoneMsg = "@localizer["DeletedDoneMsg"]";
+    var DeleteNowMsg = "@localizer["DeleteNowMsg"]";
+    var DeleteWord = "@localizer["DeleteWord"]";
+    var DontDeleteMsg = "@localizer["DontDeleteMsg"]";
+    var EditWord = "@localizer["EditWord"]";
+    var ErrorOccurredMsg = "@localizer["ErrorOccurredMsg"]";
+    var FailToSaveMsg = "@localizer["FailToSaveMsg"]";
+    var SavedMsg = "@localizer["SavedMsg"]";
+    var SavedSuccessfullyMsg = "@localizer["SavedSuccessfullyMsg"]";
+    var SuccessfullyDeletedMsg = "@localizer["SuccessfullyDeletedMsg"]";
+    var YesDeleteMsg = "@localizer["YesDeleteMsg"]";
+
+    //Custom
+
+    // Uniform Plugin => File Uploader btn text and Msg
+    var NoFileSelectedMsg = "@localizer["NoFileSelectedMsg"]";
+    var ChooseFileMsg = "@localizer["ChooseFileMsg"]";
+
+    
+
+</script>
+
+<script type="text/javascript" src="~/assets/js/Localization/validate/messages_@(lang).js"></script>
+
+    <script type="text/javascript" src="~/assets/js/Localization/select2/i18n/@(lang).js"></script>
+    <script type="text/javascript" src="~/assets/js/Localization/bootstrap-table/bootstrap-table-@(lang).js"></script>
+    <script type="text/javascript" src="~/assets/js/Localization/bootstrap-datetimepicker/@(lang).js"></script>
+
+    <script>
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Localize our Plugins To Work with different languages
+    //  Note: for Some Plugins its Enough to include localization script file to work well Like {validate.js} , {bootstrap-table}
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    @*$('.datePic').datetimepicker({
+        locale: '@lang' // add https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ar.js
+    });
+
+    $('.select2').select2({
+         language: lang
+    });*@
+    </script>
+
+    @*
+        * General File Contains Java Script Messages that used in our Web Application Pages
+            Note : Global.js and custom.js are global and general files that used in many apps Therefore translated messages for app pages are separated from them in other file
+    *@
+    <partial name="_PagesJavaScriptMsgsPartial" />

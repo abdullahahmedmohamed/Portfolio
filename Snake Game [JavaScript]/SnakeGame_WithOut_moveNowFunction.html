@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            canvas
+            {
+                border: 2px solid ;
+                position: absolute;
+                left: 500px;
+                
+            }
+            
+            button
+            {
+                font-size: 16px;
+                padding: 10px;
+                margin: 10px;
+                display: block;
+                width: 150px;
+            }
+            
+            #controls
+            {
+                display: inline-block;
+                width: 200px;
+                height: 400px;
+            }
+            
+            #score
+            {
+                position: absolute;
+                left: 500px;
+                top: 610px;
+                font-family: arial;
+                font-size: 30px;
+                color: #9933ff;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div> 
+            <div id="controls">
+          <!--  <button onclick="drawGameField();">Draw Game Field</button>
+            <button onclick="drawSnake();">Draw Snake</button>
+            <button onclick="snakeMove();">Move The Snake</button>
+            <button onclick="setFood();">Set Food</button>
+          -->  
+          <button onclick="lvl_1();">LvL1</button>
+          <button onclick="lvl_2();">LvL2</button>
+          <button onclick="lvl_3();">LvL3</button>
+          <button onclick="lvl_4();">LvL4</button>
+          <button onclick="Puse();">Puse</button>
+          <button onclick="ContinueGame();">Contunie</button>
+          <button onclick="newGame();">New Game</button>
+            </div>
+            <canvas width="600" height="600" id="can" ></canvas>
+            
+            <span id="score">Score : </span>
+        </div>
+        
+        <script>
+            
+            var currentLVL=1;
+            
+            function lvl_1()
+            {
+                clearInterval(IntervalID_GameProcess);
+                GameProcess();
+                IntervalID_GameProcess=setInterval(GameProcess,400);
+                currentLVL=1;
+            }
+            function lvl_2()
+            {
+                clearInterval(IntervalID_GameProcess);
+                GameProcess();
+                IntervalID_GameProcess=setInterval(GameProcess,300);
+                currentLVL=2;
+            }
+            function lvl_3()
+            {
+                clearInterval(IntervalID_GameProcess);
+                GameProcess();
+                IntervalID_GameProcess=setInterval(GameProcess,200);
+                currentLVL=3;
+            }
+            function lvl_4()
+            {
+                clearInterval(IntervalID_GameProcess);
+                GameProcess();
+                IntervalID_GameProcess=setInterval(GameProcess,100);
+                currentLVL=4;
+            }
+            function Puse()
+            {
+                clearInterval(IntervalID_GameProcess);
+            }
+             function ContinueGame()
+            {
+                switch(currentLVL)
+                {
+                    case 1:
+                        lvl_1();
+                        break;
+                    case 2:
+                        lvl_2();
+                        break;
+                    case 3:
+                        lvl_3();
+                        break;
+                    case 4:
+                        lvl_4();
+                        break;
+                }
+            }
+            function newGame()
+            {
+                location.reload();
+
+            }
+        </script>
+        
+        
+        
+        <script>
+                var myCanves = document.getElementById("can");
+                var cntxt = myCanves.getContext("2d");
+                var scoreSpan=document.getElementById("score");
+                var score=0;
+                
+                var currentDirection="LEFT" ;
+                var newDirection = "LEFT";
+                var gameOver=false;
+                document.onkeydown = function() {
+                                
+                                // if User Presse Same Direction dont incress Speed of Snake moving or in Case GameOVer Dont move the snake
+                                if(gameOver===true)
+                                {
+                                    return ;
+                                }
+                                
+                                if(window.event.keyCode===37 && currentDirection !=="LEFT")//keyCode 37 =>right
+                                {
+                                    newDirection="RIGHT";
+                                  
+                                }
+                                else if(window.event.keyCode===38 && currentDirection !=="DOWN")//keyCode 38 =>up
+                                {
+                                    newDirection="UP";
+                                  
+                                }
+                                else if(window.event.keyCode===39 && currentDirection !=="RIGHT")//keyCode 39 =>left
+                                {
+                                    newDirection="LEFT";
+                                  
+                                }
+                                else if (window.event.keyCode===40 && currentDirection !=="UP")//keyCode 40 => down
+                                {
+                                    newDirection="DOWN";
+                                    
+                                }
+                                
+                                
+                            };
+                
+             
+              /*  cntxt.moveTo(0,0);
+                cntxt.fillStyle = "red";
+                cntxt.lineTo(400,400);
+                cntxt.stroke();
+                
+                cntxt.moveTo(400,0);
+                cntxt.lineTo(0,400);
+                cntxt.stroke();
+                
+              
+              cntxt.fillRect(10, 10, 150, 80);
+              cntxt.fillStyle = "gray";
+              cntxt.fillRect(160, 90, 150, 80);
+    */
+              // Variables
+               
+             var numOfBoxes=20;
+              var box =myCanves.width/numOfBoxes;
+              var lastX =0;
+              var lastY= 0;
+              var firstColor="white";
+              var secondColor="gray";
+              var color=firstColor;
+              var allBoxes=new Array();
+              var newHeadPosition;
+              var foodBox;
+              var IntervalID_GameProcess;
+              
+           
+      
+    </script>
+    
+    
+    
+    
+    
+    
+    <script>
+          function drawGameField()
+          {
+              allBoxes.splice(0,allBoxes.length);
+              for (var i = 0; i < numOfBoxes; i++) 
+            {
+                lastX =0;
+                for (var j = 0; j < numOfBoxes; j++) 
+                {
+                    cntxt.fillStyle = color;
+                    cntxt.fillRect(lastX,lastY,box,box);
+                    allBoxes.push({x:lastX,y:lastY}); 
+                    lastX+=box;
+                    color = (color===firstColor)? secondColor:firstColor;
+                    
+                }      
+                lastY+=box;
+                color = (color===firstColor)? secondColor:firstColor;
+            }
+            
+            lastY=0;
+        }
+        </script>
+        
+        
+        
+        <script>
+            var snake= new Array();
+            snake[0]={x:8*box , y:5*box};
+            snake[1]={x:7*box , y:5*box};
+            snake[2]={x:6*box , y:5*box};
+            snake[3]={x:5*box , y:5*box};
+            
+            
+            
+            
+            function drawSnake()
+            {
+                
+                for (var s = 0; s < snake.length; s++) 
+                {
+                 cntxt.fillStyle=(s===0)? "green":"black";
+                 cntxt.fillRect(snake[s].x, snake[s].y, box,box);
+                }
+            }
+            
+            
+            
+            
+            function setNewHeadPosition()
+            {
+                var oldHeadX=snake[0].x;
+                var oldHeadY=snake[0].y;
+                var newHeadX;
+                var newHeadY;
+                
+              
+                if(newDirection==="LEFT")
+                { 
+                    if(oldHeadX===(numOfBoxes-1)*box) 
+                    {oldHeadX=-box;}
+                    newHeadX=oldHeadX+box; newHeadY=oldHeadY;
+                }
+                else if (newDirection==="UP") 
+                {   
+                    if(oldHeadY===0)
+                    {oldHeadY=numOfBoxes*box; }
+                    newHeadX=oldHeadX; newHeadY=oldHeadY-box;
+                }
+                else if (newDirection==="RIGHT") 
+                {   
+                     if(oldHeadX===0) 
+                    {oldHeadX=numOfBoxes*box;}
+                    newHeadX=oldHeadX-box; newHeadY=oldHeadY;}
+                else  // DOWN
+                {  
+                     if(oldHeadY===(numOfBoxes-1)*box)
+                    {oldHeadY=-box; }
+                    newHeadX=oldHeadX; newHeadY=oldHeadY+box;
+                }
+                
+                currentDirection=newDirection;
+   
+                newHeadPosition={x:newHeadX,y:newHeadY};
+                 
+            }
+            
+           
+           
+            
+            
+            function GameProcess()
+            {
+                drawGameField();
+                drawFoodInPlace(foodBox);
+                setNewHeadPosition();
+                 
+                // Rule To Lose Game
+                if(checkBoxOfSnakeBody(newHeadPosition)===true)
+                {
+                    clearInterval(IntervalID_GameProcess);
+                    drawSnake();
+                    cntxt.fillStyle = "white";
+                    cntxt.fillRect(1*box,3.3*box,11*box,2*box);
+                    
+                    cntxt.fillStyle = "red";
+                    cntxt.font="60px Arial";
+                    cntxt.fillText("Game Over",1*box,5*box);
+                    gameOver=true;
+                    return ;
+                }
+                
+                if(newHeadPosition.x===foodBox.x&&newHeadPosition.y===foodBox.y)
+                {
+                    snake.unshift(newHeadPosition);
+                    foodBox=getFoodPlace();
+                    drawFoodInPlace(foodBox);
+                     score+=20;
+                    scoreSpan.innerHTML="Score : "+score;
+                    
+                }
+                else
+                {
+                    snake.pop();
+                    snake.unshift(newHeadPosition);
+                }
+                
+                drawSnake();
+                  
+            }
+            
+        
+        function startGame()
+            {
+                foodBox=getFoodPlace();
+                foodBox={x:9*box , y:5*box};
+                drawGameField();
+                drawFoodInPlace(foodBox);
+                drawSnake();
+                IntervalID_GameProcess=setInterval(GameProcess,400);
+            }
+        </script>
+       
+        <script>
+            
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                firstColor= color;
+              }
+              
+               var numOfNotEmptyBoxes ;
+              function getEmptyBoxes()
+              {
+                  
+                  var everyEmptyBox = new Array();
+                  everyEmptyBox.splice(0,everyEmptyBox.length);
+                 
+                  
+                      for (var j = 0; j <  allBoxes.length; j++) 
+                      {
+                          var item2 =allBoxes[j] ;
+                          if(checkBoxOfSnakeBody(item2)===false)
+                          {
+                              everyEmptyBox.push(item2);
+                          }
+                         
+                       
+                             
+                      }   
+                  numOfNotEmptyBoxes =0;    
+                  return everyEmptyBox;
+              }
+              
+               function checkBoxOfSnakeBody(item2)
+              {
+                  // هذا يعني انه تم التحقق من كل جسم الثعبان من قيل و بالتالي ليش هناك داعي للبحث مرة أخرى
+                  if(numOfNotEmptyBoxes===snake.length)
+                  {
+                      return false;
+                  }
+                  else
+                  {
+                      for (var i = 0; i < snake.length; i++) 
+                             {
+                                 
+                                var item1 =snake[i];
+                                
+                                if(item1.x===item2.x && item1.y===item2.y)
+                                {
+                                    numOfNotEmptyBoxes++;
+                                    return  true;
+                                }
+                                 
+                             }
+                            return false;  
+                  }
+                
+              }
+              
+             function getFoodPlace()
+              {
+                  var emptyBoxes=getEmptyBoxes();
+                  var randomIndex =Math.floor(Math.random()*emptyBoxes.length);
+                  
+                   return  emptyBoxes[randomIndex];
+              }
+              
+               function drawFoodInPlace(foodBox)
+              { 
+                    cntxt.fillStyle="red";
+                    cntxt.fillRect(foodBox.x,foodBox.y,box,box);                  
+              }
+              
+              startGame();
+              
+        </script>
+            
+        
+        
+    </body>
+    
+</html>

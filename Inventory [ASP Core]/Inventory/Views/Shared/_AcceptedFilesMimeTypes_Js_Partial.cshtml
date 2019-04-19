@@ -1,0 +1,30 @@
+﻿@*
+
+    JavaScript Variables to carry What is Accepted Mime Types For Image / Documents that uploaded by user
+
+    => Note : This Variables Used in custom.js file
+
+    => This Application Use JQuery Validate Plugin to validate uploaded files extinctions and this allowed extinctions are declared in C# Class
+    So Instead of rewrite this allowed list again in js to initiate validation rules , i get them from FileSettings
+
+*@
+
+@{
+    var allowedImages = Inventory.GenericClasses.ManagingFiles.FileSettings.AllowedMimeTypes_Images.ToList();
+    var microsoftOfficeDocs = Inventory.GenericClasses.ManagingFiles.FileSettings.AllowedMimeTypes_MicrosoftOffice.ToList();
+    var allowedDoc = Inventory.GenericClasses.ManagingFiles.FileSettings.AllowedMimeTypes_GeneralDocuments.ToList();
+    allowedDoc.AddRange(microsoftOfficeDocs);
+
+    var fileMaxSize = Inventory.GenericClasses.ManagingFiles.FileSettings.DefaultMaxSize / 1024;
+
+
+}
+
+<script asp-append-version="true">
+
+    //Used in custom.js file
+
+    var AcceptedImgExtentins = "@(String.Join(",", allowedImages))";
+    var AcceptedDocExtentins = "@(String.Join(",", allowedDoc))";
+    var FileMaxSize = @fileMaxSize;
+</script>

@@ -1,0 +1,232 @@
+@charset "utf-8";
+/* CSS Document */
+		
+		@import url('https://fonts.googleapis.com/css?family=Montserrat');
+		@import url('https://fonts.googleapis.com/css?family=Abel');
+		@import url('https://fonts.googleapis.com/css?family=Roboto');
+		
+		/* Post Layout + Post Body LayOut*/
+		/***************************************************************
+		Set The LayOut For Each Post And For Floating Post{its post with title flaoting on img}
+		***************************************************************/
+		
+		/* "In Case Top 2 Postes"
+		To initialize area to make floating =>The Post Body will Floate On Post Image */
+		div.post-floating
+		{
+			position: relative;
+				
+		}
+		
+		div.post
+		{
+			margin-top: 40px;
+		}
+		
+		div.post img
+		{
+			width: 100%;
+			height: auto;
+			opacity: 0.8;
+			transition: all 0.2s;
+		}
+		
+		/* To Make Post Images Lighting up on hover*/
+		div.post img:hover
+		{
+			opacity: 1;
+		}
+		
+		/*  To Make Post Body {Header + Date + Category} Floating on Image Of Post */
+		
+		div.post-floating .post-body
+		{
+			width: 100%;
+			position: absolute;
+			z-index: 1;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.50);
+			color: #FFFFFF ;
+			transition: all 0.9s;
+			border-bottom: 5px solid #66679e;
+			/*font-family: 'Montserrat', sans-serif;*/
+			/*font-family: 'Abel', sans-serif;*/
+			font-family: 'Roboto', sans-serif;
+		}
+		
+		div.post-floating .post-body:hover
+		{
+			background-color: rgba(102,103,158,0.90);
+			
+			padding-bottom: 10px;
+		}
+		
+		
+		
+		
+		
+		/***************************************************************
+		END :::::Set The LayOut For Each Post And For Floating Post
+		***************************************************************/
+		
+		
+		
+		/* Post Meta*/
+		/***************************************************************
+		Set Category Button Colors and Make Them Lighting up on hoverd 
+		***************************************************************/
+		
+		div.post .post-meta 
+		{
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+		
+		div.post .post-meta .post-date
+		{
+			font-family: 'Abel', sans-serif;
+		}
+		
+		
+		div.post-meta .post-category
+		{
+			/*background-color: #4BB92F;*/
+			font-size: 13px;
+			text-transform: uppercase;
+			padding: 3px 10px;
+			font-weight: 600;
+			border-radius: 2px;
+			margin-right: 15px;
+			color: #FFF;
+			background-color: #212631;
+			transition: 0.2s all;
+			
+		}
+		
+		div.post-meta .post-category:hover, div.post-meta .post-category:focus {
+			text-decoration: none;
+			opacity: 0.9;
+			font-size: 14px;
+		}
+		
+		/*
+			initialize Css Variables For each Category 
+		*/
+		:root {
+				--cat1-color: #4BB92F;
+				--cat2-color: #ff8700;
+				--cat3-color: #0078ff;
+				--cat4-color: #8d00ff;
+				
+			}
+		
+		
+		div.post-meta .post-category.cat-1 
+		{
+			background-color: var(--cat1-color);
+		}
+		
+		div.post-meta .post-category.cat-2 
+		{
+			background-color: var(--cat2-color);
+		}
+		
+		div.post-meta .post-category.cat-3 
+		{
+			background-color: var(--cat3-color);
+		}
+		
+		div.post-meta .post-category.cat-4 
+		{
+			background-color: var(--cat4-color);
+		}
+		
+		/***************************************************************
+		END :::::Set Category Button Colors 
+		***************************************************************/
+		
+		
+		/* Post Title*/
+		/***************************************************************
+		Set Post Title Design And Animation
+		***************************************************************/
+		div.post-body .post-title a
+		{
+			font-family: 'Roboto', sans-serif;
+			color: #000000;
+			transition: all 0.1s;
+		}
+		div.post-floating .post-body .post-title a
+		{
+			color: #FFFFFF;
+			text-decoration: none;
+			
+		}
+		 /* Post Title HOVER */
+		div.post-floating div.post-body .post-title a:hover
+		{
+			 
+    		 text-shadow: 2px 2px 4px #000000;
+			 font-size: 1.1em; 
+			
+		}
+		
+		div.post-body .post-title a:hover
+		{
+			 /*color: #ABABAB;*/
+    		 text-shadow: 2px 2px 4px #ABABAB;
+			 font-size: 1.1em; 
+			
+		}
+		
+		/***************************************************************
+		END :::::Post Title
+		***************************************************************/
+		
+	/* Paragraph of Post Brief */
+		div.post-body .post-brief
+		{
+			font-family: 'Montserrat', sans-serif;	
+		  	text-align: justify !important;
+		}
+	/* END : Paragraph of Post Brief */
+
+
+
+
+		/* Wide Post */
+		/***************************************************************
+		its post have 100% of parant width with img on left and post-body on right
+		***************************************************************/
+		
+		div.post.post-wide .post-img
+		{
+			width: 40%;
+			height: auto;
+			float: left;
+		}
+		
+		.post.post-wide .post-body
+		{
+			margin-left: calc(40% + 30px);
+		}
+		
+		/* In Case Tablet Size Dont Make It Wide*/
+		@media only screen and (max-width: 768px)
+		{
+			div.post.post-wide .post-img
+			{
+			width: 100%;
+			height: auto;
+			float: none;
+			}
+			
+			.post.post-wide .post-body
+			{
+				margin-left: 0;
+			}
+		}
+
+		/***************************************************************
+		END ::::: Wide Post Design
+		***************************************************************/

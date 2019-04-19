@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			button
+            {
+                font-size: 16px;
+                padding: 10px;
+                margin: 10px;
+                display: block;
+                width: 150px;
+            }
+            
+            #controls
+            {
+                display: inline-block;
+                
+            }
+			#can
+			{
+			display: inline-block;
+			}
+			
+			 #score
+            {	margin:10px;
+               padding:20px;
+                font-family: arial;
+                font-size: 30px;
+                color: #9933ff;
+				background-color:yellow;
+            }
+			
+		</style>
+    </head>
+    <body>
+        <div id="can" >
+            
+            <canvas id="myCanvas" width="480" height="900"></canvas>
+			
+        </div>
+		  <div id="controls">
+          
+		 <span id="score">Score : </span>
+		  <br> <br>
+          <button onclick="lvl_1();">LvL1</button>
+          <button onclick="lvl_2();">LvL2</button>
+          <button onclick="lvl_3();">LvL3</button>
+          <button onclick="lvl_4();">LvL4</button>
+          <button onclick="Puse();">Puse</button>
+          <button onclick="ContinueGame();">Contunie</button>
+          <button onclick="newGame();">New Game</button>
+            </div>
+           
+            
+            
+        
+        
+       
+        
+		
+		
+		
+		
+		
+		
+		
+		<!-- i Use Img Tag To Get Road Img by getElementById in Js to Draw it in Canves -->
+		<div style="display:none;">
+        <img src="images/Road.png" alt="" id="road"/>
+        <img src="images/car1.png" alt="" id="player-car"/>
+        <img src="images/car2.png" alt="" id="enemy-car"/>
+		</div>
+        <script src="js.js" type="text/javascript"></script>
+		
+		
+        
+    </body>
+</html>

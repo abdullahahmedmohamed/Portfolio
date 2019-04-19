@@ -1,0 +1,678 @@
+/* CSS Document */
+
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		
+
+
+
+/*********************************************************************************************
+* Header
+*********************************************************************************************/
+
+
+
+/* The Mobile Side Navigation Menu */
+			.sidenav {
+				height: 100%; /* 100% Full-height */
+				width: 0; /* 0 width - change this with JavaScript */
+				position: fixed; /* Stay in place */
+				z-index: 1; /* Stay on top */
+				top: 0; /* Stay at the top */
+				right: 0;
+				background-color: rgba(0,0,0,0.80); /* Black with opacity*/
+				
+				overflow-x: hidden; /* Disable horizontal scroll */
+				padding-top: 60px; /* Place content 60px from the top */
+				transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+			}
+
+			/* The navigation menu links */
+			.sidenav a {
+				padding: 8px 8px 8px 32px;
+				text-decoration: none;
+				font-size: 25px;
+				color: #818181;
+				display: block;
+				transition: 0.3s;
+			}
+
+			/* When you mouse over the navigation links, change their color */
+			.sidenav a:hover {
+				color: #f1f1f1;
+			}
+
+			/* Position and style the close button (top right corner) */
+			.sidenav .closebtn {
+				position: absolute;
+				top: 0;
+				right: 25px;
+				font-size: 36px;
+				margin-left: 50px;
+			}
+
+/* END:Mobile Side Navigation Menu */
+
+
+
+
+/* Welcome Photo Cover */
+		
+		#welcome-cover
+		{
+			width: 100%;
+			height: 100vh;
+			
+			background-size: cover;
+			/*background-image: url(images/mockup-2443050_1920.jpg) ;*/
+			background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) , url("../images/mockup-2.jpg") ;
+			background-repeat: no-repeat;
+			background-position: top center;
+			background-attachment: fixed;
+			
+			display: table;
+		}
+		
+		#welcome-cover .cover-body
+		{
+			display: table-cell;
+			vertical-align: middle;
+			padding: 20px;
+		}
+		
+		#welcome-cover .cover-quote h1
+		{
+			color: rgba(255,255,255,1.00);
+			
+			font-family: "monospace";
+			text-transform: uppercase;
+			font-size: 300%;
+		}
+		
+		#welcome-cover .cover-quote p
+		{
+			font-family: "Roboto" ,"sans-serif";
+			color: #FFFFFF;
+			font-size: 150%;
+		}
+		
+		
+		#welcome-cover .cover-links a
+		{
+			color: #FFFFFF;
+			font-family: "Roboto" ,"sans-serif";
+			padding: 10px 30px;
+			text-decoration: none;
+			margin: 10px;
+			font-size: 13px;
+			text-transform: uppercase;
+			background: #33cdf1;
+			border-radius: 3px;
+		}
+
+@media only screen and (max-width: 768px){
+				#welcome-cover .cover-quote h1 {
+					font-size: 200%;
+				}
+				
+				#welcome-cover .cover-quote p {
+					font-size: 125%;
+				}
+			}
+
+@media only screen and (max-width: 576px){
+				#welcome-cover .cover-quote h1 {
+					font-size: 150%;
+				}
+				
+				#welcome-cover .cover-quote p {
+					font-size: 100%;
+				}			}
+ /* END Welcome Photo Cover */	
+		
+
+
+/*********************************************************************************************
+* END:Header
+*********************************************************************************************/
+
+
+
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************************************************************
+* MAIN-Section
+*********************************************************************************************/
+
+/*NOTE : Post CSS in Outher css file */
+
+/* Aside Menue Profile Avaters / Categories*/ 
+	
+		div.aside-widget 
+		{
+			margin-top: 40px;
+		}
+		
+		
+		
+		
+		/* Avatar (user avatar or user-profile photo) */
+		/***************************************************************
+			- the img will be a background for div.ava-img {" in line style "}
+			- make profile-photo shaped as circle what ever the dimintion of photo 
+			- div.ava-img its take a full width of parant
+			
+		***************************************************************/
+		
+		div.avatar:hover
+		{
+			transform: scale(1.1,1.1);
+		}
+		
+		div.avatar
+		{
+			margin-bottom: 10px;
+			/*background-color: rgba(204, 206, 208, 0.45098039215686275);*/
+			user-select: none;
+    		cursor: pointer;
+			transition: transform 0.2s;
+		}
+		
+		div.avatar div.ava-img
+		{
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: top center;
+			width: 100%;
+			border-radius: 50%;
+			
+		}
+			/* set imgDiv height equalt to its width */
+		div.avatar div.ava-img::before
+		{
+			content: "";
+			display: block;
+			padding-top: 100%; 	/* initial Aspect  ratio of 1:1*/
+			height: 0;
+		}
+		
+		div.avatar .ava-title
+		{
+			font-family: 'Roboto', sans-serif;
+			/*font-size: 1.3vw;*/
+		}
+		
+		
+		
+		/***************************************************************
+		END ::::: Avatar
+		***************************************************************/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/***************************************************************
+		Category in Aside menue
+		***************************************************************/
+		
+		.category-widget
+		{
+			padding-top: 40px;	
+		}
+		
+		.category-widget ul li 
+		{
+			display: block;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #d9dce0;
+		}
+		
+		.category-widget ul li > a 
+		{
+			display: block;
+			-webkit-transition: 0.2s color;
+			transition: 0.2s color;
+			
+			font-weight: 600;
+			color: #212631;
+			text-decoration: none;
+		}
+		
+		.category-widget ul li > a.cat-1:hover,
+		.category-widget ul li > a.cat-1:focus 
+		{
+			color: var(--cat1-color);
+		}
+		
+		.category-widget ul li > a.cat-2:hover,
+		.category-widget ul li > a.cat-2:focus 
+		{
+			color: var(--cat2-color);
+		}
+		
+		.category-widget ul li > a.cat-3:hover,
+		.category-widget ul li > a.cat-3:focus 
+		{
+			color: var(--cat3-color);
+		}
+		
+		.category-widget ul li > a.cat-4:hover,
+		.category-widget ul li > a.cat-4:focus 
+		{
+			color: var(--cat4-color);
+		}
+		
+		.category-widget ul li > a > span 
+		{
+			float: right;
+			color: #fff;
+			background-color: #212631;
+			padding: 0px 5px;
+			font-weight: 600;
+			border-radius: 2px;
+		}
+		
+		.category-widget ul li > a.cat-1 > span 
+		{
+			background-color: var(--cat1-color);
+		}
+		
+		.category-widget ul li > a.cat-2 > span 
+		{
+			background-color: var(--cat2-color);
+		}
+		
+		.category-widget ul li > a.cat-3 > span 
+		{
+			background-color: var(--cat3-color);
+		}
+		
+		.category-widget ul li > a.cat-4 > span 
+		{
+			background-color: var(--cat4-color);
+		}
+		
+		/***************************************************************
+		END ::: Category
+		***************************************************************/
+		
+/*END Aside Menue Profile Avaters / Categories*/ 
+
+
+
+/* Any Section Heading [in Main-Section And Footer-Section]*/
+		.section-title 
+		{
+			margin-top: 40px;
+			
+		}
+		
+		.section-title .heading
+		{
+			font-family: 'Roboto', sans-serif;
+    		text-transform: uppercase;
+		}
+/*END Section Heading [in Main-Section And Footer-Section]*/
+
+
+
+		/***************************************************************
+		* Photo Gallary [Using Masonary.js] 
+		***************************************************************/
+		
+		/** Masonary Grid Css */
+
+			div.gallary-grid {
+					  background: #DDD;
+					  margin-top: 40px;
+					  margin-bottom: 20px;
+					  perspective: 700px; /* Set 3D Dimension to make photo move in Z dimension on hover*/
+					}
+
+			/* clear fix */
+			div.gallary-grid:after {
+			  content: '';
+			  display: block;
+			  clear: both;
+			}
+
+			/* ---- .grid-item ---- */
+
+			div.gallary-grid-sizer,
+			div.gallary-grid-item {
+			  width: 33.333%;
+			}
+
+			div.gallary-grid-item {
+			  float: left;
+			}
+
+			div.gallary-grid-item img {
+			  display: block;
+			  max-width: 100%;
+			  cursor: pointer;
+			  transition: transform 1s;
+			}
+			
+			/* On Hover Make Photo Move in Z diminsion its like come out from screen */
+			div.gallary-grid-item:hover {
+			  z-index: 1000;
+			}
+			div.gallary-grid-item img:hover {
+				 transform: translateZ(50px);
+			}
+			/****************************************/
+
+		/** END : Masonary Grid Css */
+
+
+		/** Media for Grid in Small Screens */
+				/* 100% Image Width on Smaller Screens */
+			@media only screen and (max-width: 768px){
+				div.img-modal .img-modal-content {
+					width: 100%;
+				}
+				
+				div.gallary-grid-sizer,
+				div.gallary-grid-item {
+				  width: 100%;
+				}
+				
+				div.gallary-grid-item img:hover {
+				 transform: translateZ(0);
+				}
+			}
+		/** END: Media for Grid in Small Screens */
+
+
+/* Modal to Zooming Image inside it By Click on img */			
+			/* The Modal (background) */
+			div.img-modal{
+				display: none; /* Hidden by default */
+				position: fixed; /* Stay in place */
+				z-index: 2; /* Sit on top */
+				padding-top: 100px; /* Location of the box */
+				left: 0;
+				top: 0;
+				width: 100%; /* Full width */
+				height: 100%; /* Full height */
+				overflow: auto; /* Enable scroll if needed */
+				background-color: rgb(0,0,0); /* Fallback color */
+				background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+			}
+
+			/* Modal Content (Image) */
+			div.img-modal .img-modal-content {
+				margin: auto;
+				display: block;
+				width: 80%;
+				max-width: 700px;
+			}
+
+			/* Caption of Modal Image (Image Text) - Same Width as the Image */
+			#img-caption {
+				margin: auto;
+				display: block;
+				width: 80%;
+				max-width: 700px;
+				text-align: center;
+				color: #ccc;
+				padding: 10px 0;
+				height: 150px;
+			}
+
+			/* Add Animation - Zoom in the Modal */
+			div.img-modal .img-modal-content, #img-caption { 
+				animation-name: zoom;
+				animation-duration: 0.6s;
+			}
+
+			@keyframes zoom {
+				from {transform:scale(0)} 
+				to {transform:scale(1)}
+			}
+
+			/* The Close Button */
+			div.img-modal .img-model-close {
+				position: absolute;
+				top: 15px;
+				right: 35px;
+				color: #f1f1f1;
+				font-size: 40px;
+				font-weight: bold;
+				transition: 0.3s;
+			}
+
+			div.img-modal .img-model-close:hover,
+			div.img-modal .img-model-close:focus {
+				color: #bbb;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			/* 100% Image Width on Smaller Screens */
+			@media only screen and (max-width: 700px){
+				div.img-modal .img-modal-content {
+					width: 100%;
+				}
+			}
+/* END : Modal to Zooming Image inside it By Click on img */		
+
+		/***************************************************************
+		* END : Photo Gallary [Using Masonary.js] 
+		***************************************************************/
+
+
+
+/*********************************************************************************************
+* END :MAIN-Section
+*********************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************************************************************
+* FOOTER
+*********************************************************************************************/
+		/* Social icons Css */ 
+		/* Social Icons in Footer */
+		div.social-icons {
+		  margin:5px auto;
+		  width:100%;
+		  text-align:center;
+		}
+		
+		div.social-icons .icon {
+			position:relative;
+			text-align:center;
+			width:0px;
+			height:0px;
+			padding:20px;
+			border-radius: 		20px 20px 20px 20px;
+			color:#FFFFFF;
+		}
+		div.social-icons .icon i {
+			font-size:20px;
+			position:absolute;
+			left:9px;
+			top:10px;
+		}
+		div.social-icons .icon.social {
+			display: inline-block;
+			margin:0 5px 0 0;
+			cursor:pointer;
+			background:#6d6e71 ;
+			color:#262626;
+			transition: 0.5s;
+				
+		}
+		div.social-icons .icon.social:hover {
+			background:#262626 ;
+			color:#6d6e71;
+			transform: scale(1.1,1.1);
+			
+			-webkit-filter:	drop-shadow(0 1px 10px rgba(0,0,0,.8));
+			-moz-filter: 	drop-shadow(0 1px 10px rgba(0,0,0,.8));
+			-ms-filter: 		drop-shadow(0 1px 10px rgba(0,0,0,.8));
+			-o-filter: 		drop-shadow(0 1px 10px rgba(0,0,0,.8));
+			filter: 			drop-shadow(0 1px 10px rgba(0,0,0,.8));	 	
+		}
+		div.social-icons .icon.social.fb i {
+			left:13px;
+			top:10px;
+		}
+		div.social-icons .icon.social.tw i {
+			left:11px;
+		}
+		div.social-icons .icon.social.in i {
+			left:11px;
+		}
+	/* End :Social Icons in Footer */
+		
+		
+		/* Create Footer Sections Equal in Height and the content justified vertically */
+		section.footer-section
+		{
+			display: flex;
+			flex-flow: column;
+			height: 300px;
+		}
+		
+		ul.list-icons
+		{
+			list-style-type: none;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			
+		}
+		/**********************************************/
+		
+		/* UL FontAwosome ICons instead of list bullets*/
+		ul.list-icons i
+		{
+			min-width: 30px;
+			color: #a89574;
+		}
+		ul.list-icons  li
+		{
+			margin-top: 10px;
+		}
+		
+		ul.list-icons  li a
+		{
+			text-decoration: none;
+			color: #FFFFFF;
+		}
+		/***************************************/
+		
+		
+		
+		
+		/* Copy Rights Row */	
+		
+	  /* Ribbon Design */ 
+		.non-semantic-protector { position: relative; z-index: 1; }
+		
+		.ribbon {
+		 font-size: 12px !important;
+		 /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+		 width: 200px;
+
+		 position: relative;
+		 background: #6c757d;
+		 color: #fff;
+		 text-align: center;
+		 padding: 1em 2em; /* Adjust to suit */
+		 margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+		}
+		.ribbon:before, .ribbon:after {
+		 content: "";
+		 position: absolute;
+		 display: block;
+		 bottom: -1em;
+		 border: 1.5em solid #6c757d;
+		 z-index: -1;
+		}
+		.ribbon:before {
+		 left: -2em;
+		 border-right-width: 1.5em;
+		 border-left-color: transparent;
+		}
+		.ribbon:after {
+		 right: -2em;
+		 border-left-width: 1.5em;
+		 border-right-color: transparent;
+		}
+		.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+		 content: "";
+		 position: absolute;
+		 display: block;
+		 border-style: solid;
+		 border-color: #858e96 transparent transparent transparent;
+		 bottom: -1em;
+		}
+		.ribbon .ribbon-content:before {
+		 left: 0;
+		 border-width: 1em 0 0 1em;
+		}
+		.ribbon .ribbon-content:after {
+		 right: 0;
+		 border-width: 1em 1em 0 0;
+		}
+	  /* End: Ribbon Design */
+		
+
+	/* End:CopyRights */
+		
+		
+		
+/**********************************************************************************************
+* END:FOOTER
+**********************************************************************************************/
+
+	
+	

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	
+	<style>
+		td
+		{
+			width: 80px;
+			height: 80px;
+			
+		}
+		td
+		{
+			vertical-align: middle;
+			text-align: center;
+			font-size: 60px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 id="title">Player </h1>
+	<table border="2" style="border-collapse: collapse;" > 
+		<tr id="10">
+			<td id="1" onClick="action(this);"></td>
+			<td id="2" onClick="action(this);"></td>
+			<td id="3" onClick="action(this);"></td>
+			
+		</tr>
+		
+		<tr id="20">
+			<td id="4" onClick="action(this);"></td>
+			<td id="5" onClick="action(this);"></td>
+			<td id="6" onClick="action(this);"></td>
+			
+		</tr>
+		
+		<tr id="30">
+			<td id="7" onClick="action(this);"></td>
+			<td id="8" onClick="action(this);"></td>
+			<td id="9" onClick="action(this);"></td>
+			
+		</tr>
+		
+	</table>
+<center> <h1 id="winner" style="color:red;"></h1> </center>
+<script>
+	
+	var row1 =[null,null,null];
+	var row2 =[null,null,null];
+	var row3 =[null,null,null];
+	   
+	var gameFinished=false;	
+	var turnNumber=0;
+	var turn ="o";
+	var	title = document.getElementById("title");
+	title.innerHTML="Player "+turn.toUpperCase();
+		function changeTurn()
+		{
+			turn = (turn=="x")? "o" : "x" ;
+			title.innerHTML="Player "+turn.toUpperCase();
+			
+		}
+		
+	function action (cell)
+		{
+			// In Case The Game is Finished No One Can Play
+			if(gameFinished) return;
+			
+			turnNumber++;
+			if(cell.innerHTML =="" || cell.innerHTML == null)
+				{
+					cell.innerHTML=turn;
+					
+					
+					switch (cell.parentNode.id)
+						{
+						case "10" :
+							row1[Number(cell.id) -1]=turn;
+							break;
+						case "20" :
+							row2[(Number(cell.id)-3) -1]=turn;
+							break;
+						case "30" :
+							row3[(Number(cell.id)-6) -1]=turn;
+							break;
+						}
+					// Check For The Winner After 4 Turn Be Cause No One Can Win before that	
+					if(turnNumber>4)checkForWinner();
+					changeTurn();
+					
+				}
+			else
+				{
+					alert("Sorry You Have To Choose Other Box");
+				}
+			
+		}
+	
+	function checkForWinner()
+	{
+		// Check For Winner in Full Column
+		for	(var i =0 ; i<3; i++)
+			{
+				if (row1[i]==row2[i]&&row2[i]==row3[i]&&row3[i]!=null)
+					{
+						finished(turn);return;
+					}
+				
+			}
+		
+		// Check For Winner in Full Row
+		if (checkIfExists(row1))
+				{
+					finished(turn);return;
+				}
+		if (checkIfExists(row2))
+				{
+					finished(turn);return;
+				}
+		if (checkIfExists(row3))
+				{
+					finished(turn);return;
+				}
+				
+		// Check For Winner "/" Shape or "\" Shape
+		
+		if(row1[0]==row2[1]&&row2[1]==row3[2]&&row3[2]!=null)
+		{
+		 finished(turn);return;
+		}
+		else if(row1[2]==row2[1]&&row2[1]==row3[0]&&row3[0]!=null)
+		{
+			finished(turn);
+			return;
+		}
+		
+	}
+	
+	function checkIfExists(array)
+	{
+		if(array.length < 3)
+			{
+				return false;
+			}
+	/*	var item = array[0];
+		
+		for (var i =0 ; i<array.length; i++)
+			{
+				
+			}
+			*/
+		if ((array[0]==array[1] )&& (array[1]==array[2])&&array[2]!=null)
+				{
+					return true;
+				}
+		return false;
+	}
+	
+	function finished(player)
+	{
+		gameFinished=true;
+		alert("The Player "+player.toUpperCase()+" Is Winner");
+		document.getElementById("winner").innerHTML="The Player "+player.toUpperCase()+" Is Winner";
+		
+		
+	}
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</body>
+</html>

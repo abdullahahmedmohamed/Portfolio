@@ -1,0 +1,30 @@
+﻿
+@{
+    //************************************************************************************************************************************************************************************************************************************
+    // Set Layout Direction
+    //************************************************************************************************************************************************************************************************************************************
+    var requestCulture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+    var lang = requestCulture.RequestCulture.UICulture;
+
+    string dir = (lang.Name == Lang.Arabic) ? Lang.dir_rtl : Lang.dir_ltr;
+    //************************************************************************************************************************************************************************************************************************************
+
+    // User Picture
+    string pic = User.FindFirst(Inventory.AccountTooles.ClaimName.pic).Value ?? string.Empty;
+
+    // Current Branch
+    string branchName = User.FindFirst(Inventory.AccountTooles.ClaimName.BranchName).Value ?? string.Empty;
+
+    // User Full name (not loggin UserName)
+    string userName = User.Identity.Name ?? string.Empty;
+}
+<!DOCTYPE html>
+<html dir="@dir">
+<head>
+   
+</head>
+<body>
+
+    
+</body>
+</html>
