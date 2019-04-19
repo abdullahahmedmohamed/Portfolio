@@ -1,7 +1,7 @@
 # Portfolio
 This is a Collection of my best Development Projects 
 
-and thats what i think => programing and development it's not about programing language but it's about how creative you are to write clean and readable and maintainable and reusable code with high performance
+For Me => programing and development it's not about programing language but it's about how creative you are to write clean and readable and maintainable and reusable code with high performance
 
 # Java Script Projects : 
 Note that these Games are arranged according to the best in logic and code
